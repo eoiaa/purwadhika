@@ -44,7 +44,7 @@ total = 0
 
 def menu():
     print(f"""
-Selamat Datang di Raditmart - Minimarket
+Selamat Datang di Raditmart - Minimarket\n
 1. Melihat List Produk
 2. Tambah Produk
 3. Memperbarui produk
@@ -150,15 +150,15 @@ def sub1():
             else:
                 listProduk()
         elif inputSubMenu1 == "2":
-            inputPencarian = input("Masukkan Produk yang ingin dicari: ")
+            inputPencarian = input(
+                "Masukkan Produk yang ingin dicari: ")
             hasil = []
 
             for i in range(len(barang["nama"])):
                 if (
                     (inputPencarian.lower() in barang["nama"][i].lower()) or
                     (inputPencarian.lower() in barang["kategori"][i].lower()) or
-                    (inputPencarian.lower()
-                     in barang["produsen"][i].lower())
+                    (inputPencarian.lower() in barang["produsen"][i].lower())
                 ):
                     hasil.append({
                         "nama": barang["nama"][i],
@@ -171,12 +171,12 @@ def sub1():
             if not hasil:
                 print("Produk tidak tersedia.")
             else:
-                print(f"{'Nama': < 20} {'Kategori': < 10} {
-                    'Harga (Rp)': < 10} {'Stok': < 5} {'Produsen': < 10}")
+                print(f"{'Nama':<20} {'Kategori':<10} {
+                      'Harga (Rp)':<10} {'Stok':<5} {'Produsen':<10}")
                 print("="*60)
                 for item in hasil:
-                    print(f"{item['nama']: < 20} {item['kategori']: < 10} {
-                          item['harga']: < 10} {item['stock']: < 5} {item['produsen']: < 10}")
+                    print(f"{item["nama"]:<20} {item["kategori"]:<10} {
+                          item["harga"]:<10} {item["stock"]:<5} {item["produsen"]:<10}")
         elif inputSubMenu1 == "3":
             menu()
             return
@@ -394,8 +394,8 @@ def showKeranjang(keranjang):
     print(f"{'Nama Produk':<20} {'Jumlah':<10} {'Harga Total':<15}")
     print("=" * 45)
     for item in keranjang:
-        print(f"{item["nama"]:<20} {item["jumlah"]: < 10} {
-              item["hargaTotal"]: < 15}")
+        print(f"{item["nama"]:<20} {item["jumlah"]:<10} {
+              item["hargaTotal"]:<15}")
     print("=" * 45)
 
 
