@@ -1,4 +1,4 @@
-# Raditmart - Minimarket ss
+# Raditmart - Minimarket
 
 from tabulate import tabulate
 
