@@ -1,4 +1,4 @@
-# Raditmart - Minimarket ss
+# Raditmart - Minimarket
 
 from tabulate import tabulate
 
@@ -28,7 +28,12 @@ barang = {
         20000
     ],
     "stock": [
-        20, 10, 30, 50, 100, 0
+        20,
+        10,
+        30,
+        50,
+        100,
+        0
     ],
     "produsen": [
         "PT. Mayora",
@@ -146,37 +151,38 @@ def sub1():
         inputSubMenu1 = input("Masukkan angka pada Sub Menu: ")
         if inputSubMenu1 == "1":
             if not barang["nama"]:
-                print("Produk tidak tersedia")
+                print("Semua Produk tidak tersedia")
             else:
                 listProduk()
         elif inputSubMenu1 == "2":
-            inputPencarian = input(
-                "Masukkan Produk yang ingin dicari: ")
-            hasil = []
-
-            for i in range(len(barang["nama"])):
-                if (
-                    (inputPencarian.lower() in barang["nama"][i].lower()) or
-                    (inputPencarian.lower() in barang["kategori"][i].lower()) or
-                    (inputPencarian.lower() in barang["produsen"][i].lower())
-                ):
-                    hasil.append({
-                        "nama": barang["nama"][i],
-                        "kategori": barang["kategori"][i],
-                        "harga": barang["harga"][i],
-                        "stock": barang["stock"][i],
-                        "produsen": barang["produsen"][i]
-                    })
-
-            if not hasil:
-                print("Produk tidak tersedia.")
-            else:
-                print(f"{'Nama':<20} {'Kategori':<10} {
-                      'Harga (Rp)':<10} {'Stok':<5} {'Produsen':<10}")
-                print("="*60)
-                for item in hasil:
-                    print(f"{item["nama"]:<20} {item["kategori"]:<10} {
-                          item["harga"]:<10} {item["stock"]:<5} {item["produsen"]:<10}")
+            while True:
+                inputPencarian = input(
+                    "Masukkan Produk yang ingin dicari: ").strip()
+                hasil = []
+                for i in range(len(barang["nama"])):
+                    if (
+                        (inputPencarian.lower() in barang["nama"][i].lower()) or
+                        (inputPencarian.lower() in barang["kategori"][i].lower()) or
+                        (inputPencarian.lower()
+                         in barang["produsen"][i].lower())
+                    ):
+                        hasil.append({
+                            "nama": barang["nama"][i],
+                            "kategori": barang["kategori"][i],
+                            "harga": barang["harga"][i],
+                            "stock": barang["stock"][i],
+                            "produsen": barang["produsen"][i]
+                        })
+                if not hasil:
+                    print(f"Produk {inputPencarian} tidak tersedia.")
+                else:
+                    print(f"{'Nama':<20} {'Kategori':<10} {
+                        'Harga (Rp)':<10} {'Stok':<5} {'Produsen':<10}")
+                    print("="*60)
+                    for item in hasil:
+                        print(f"{item["nama"]:<20} {item["kategori"]:<10} {
+                            item["harga"]:<10} {item["stock"]:<5} {item["produsen"]:<10}")
+                    break
         elif inputSubMenu1 == "3":
             menu()
             return
@@ -215,7 +221,7 @@ def sub2():
                 inputProdusen = input("Masukkan Produsen dari Produk: ")
 
             if inputNama.lower() in [nama.lower() for nama in barang["nama"]]:
-                print("Nama Produk sudah ada!")
+                print(f"Nama Produk {inputNama} sudah ada!")
             else:
                 barang["nama"].append(inputNama)
                 barang["kategori"].append(inputKategori)
@@ -223,7 +229,7 @@ def sub2():
                 barang["stock"].append(int(inputStock))
                 barang["produsen"].append(inputProdusen)
 
-                print(f"Produk berhasil ditambahkan")
+                print(f"Produk {inputNama} berhasil ditambahkan")
         elif inputSubMenu2 == "2":
             menu()
             return
@@ -232,12 +238,12 @@ def sub2():
 
 
 def sub3():
-    listProduk()
     while True:
         subMenu3()
         inputSubMenu3 = input("Masukkan angka pada Sub Menu: ")
         if inputSubMenu3 == "1":
             while True:
+                listProduk()
                 namaProduk = input(
                     "Masukkan Nama produk yang ingin di update: ").strip()
 
@@ -247,6 +253,8 @@ def sub3():
                 if namaProduk.lower() in [nama.lower() for nama in barang["nama"]]:
                     index = next(i for i, nama in enumerate(
                         barang["nama"]) if nama.lower() == namaProduk.lower())
+                    print(f"\nNama Produk yang ingin di perbarui: {
+                          barang["nama"][index]}")
                     print("\nKolom: ")
                     print("1. Nama")
                     print("2. Kategori")
@@ -263,6 +271,8 @@ def sub3():
                             print("Nama produk harus diisi!")
                             barang["nama"][index] = input(
                                 "Masukkan nama baru: ").strip()
+                        print(f"Nama Produk berhasil diubah menjadi {
+                              barang["nama"][index]}")
                         break
                     elif pilih == "2":
                         barang["kategori"][index] = input(
@@ -271,6 +281,8 @@ def sub3():
                             print("Kategori produk harus diisi!")
                             barang["kategori"][index] = input(
                                 "Masukkan Kategori baru: ").strip()
+                            print(f"Kategori Produk {barang["nama"][index]} berhasil diubah menjadi {
+                                  barang["kategori"][index]}")
                         break
                     elif pilih == "3":
                         barang["harga"][index] = input(
@@ -282,6 +294,8 @@ def sub3():
                         else:
                             barang["harga"][index] = int(
                                 barang["harga"][index])
+                            print(f"Harga Produk {barang["nama"][index]} berhasil diubah menjadi {
+                                  barang["harga"][index]}")
                         break
                     elif pilih == "4":
                         barang["stock"][index] = input(
@@ -293,6 +307,8 @@ def sub3():
                         else:
                             barang["stock"][index] = int(
                                 barang["stock"][index])
+                            print(f"Stock Produk {barang["nama"][index]} berhasil diubah menjadi {
+                                  barang["stock"][index]}")
                         break
                     elif pilih == "5":
                         barang["produsen"][index] = input(
@@ -301,6 +317,8 @@ def sub3():
                             print("Produsen produk harus diisi!")
                             barang["produsen"][index] = input(
                                 "Masukkan Produsen baru: ").strip()
+                            print(f"Produsen Produk {barang["nama"][index]} berhasil diubah menjadi {
+                                  barang["produsen"][index]}")
                         break
                     elif pilih == "6":
                         # Nama
@@ -391,12 +409,12 @@ def sub4():
 
 def showKeranjang(keranjang):
     print("\nKeranjang Belanja Anda:")
-    print(f"{'Nama Produk':<20} {'Jumlah':<10} {'Harga Total':<15}")
-    print("=" * 45)
-    for item in keranjang:
-        print(f"{item["nama"]:<20} {item["jumlah"]:<10} {
+    print(f"{'No':<2} {'Nama Produk':<20} {'Harga per Item':<15} {
+          'Jumlah':<10} {'Harga Total':<15}")
+    print("=" * 70)
+    for i, item in enumerate(keranjang, start=1):
+        print(f"{i:<2} {item["nama"]:<20} {item["harga"]:<15} {item["jumlah"]:<10} {
               item["hargaTotal"]:<15}")
-    print("=" * 45)
 
 
 def sub5():
@@ -435,13 +453,22 @@ def sub5():
                             break
                     except ValueError:
                         print("Input Jumlah harus berupa angka!")
-                hargaTotal = barang["harga"][index] * inputJumlah
-                keranjang.append({
-                    "nama": inputBeli,
-                    "jumlah": inputJumlah,
-                    "hargaTotal": hargaTotal
-                })
+
                 barang["stock"][index] -= inputJumlah
+
+                for item in keranjang:
+                    if item["nama"] == inputBeli:
+                        item["jumlah"] += inputJumlah
+                        item["hargaTotal"] += inputJumlah * \
+                            barang["harga"][index]
+                        break
+                else:
+                    keranjang.append({
+                        "nama": inputBeli,
+                        "harga": barang["harga"][index],
+                        "jumlah": inputJumlah,
+                        "hargaTotal": barang["harga"][index] * inputJumlah
+                    })
 
                 showKeranjang(keranjang)
 
