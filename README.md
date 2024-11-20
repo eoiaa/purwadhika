@@ -1,108 +1,79 @@
-README - Raditmart - Minimarket
-Selamat datang di Raditmart, sebuah aplikasi berbasis Python untuk mengelola minimarket. Aplikasi ini dilengkapi dengan berbagai fitur seperti melihat daftar produk, menambahkan produk, memperbarui produk, menghapus produk, serta fitur pembelian produk.
+Certainly! Below is a sample README.md file for your Raditmart Minimarket project. This file provides an overview of the project, instructions for setting it up, and usage guidelines. You can customize it further based on your specific needs or additional features.
 
-Fitur Utama
-Melihat List Produk:
+markdown
 
-Menampilkan semua produk yang tersedia di minimarket.
-Memungkinkan pencarian produk berdasarkan nama, kategori, atau produsen.
-Tambah Produk (Akses Admin):
+# Raditmart - Minimarket
 
-Menambahkan produk baru ke daftar barang.
-Pastikan untuk memasukkan detail seperti nama produk, kategori, harga, stok, dan produsen.
-Memperbarui Produk (Akses Admin):
+Raditmart is a console-based minimarket management system implemented in Python. It allows users to manage products, view inventory, and process purchases. This project is designed to help small businesses manage their inventory efficiently.
 
-Mengedit detail produk seperti nama, kategori, harga, stok, atau produsen.
-Mendukung pembaruan pada satu atau beberapa kolom sekaligus.
-Menghapus Produk (Akses Admin):
+## Features
 
-Menghapus produk tertentu dari daftar barang.
-Membeli Produk:
+- View all available products in the inventory.
+- Search for products by name, category, or producer.
+- Add new products to the inventory (password protected).
+- Update existing product details (password protected).
+- Delete products from the inventory (password protected).
+- Purchase products and manage stock levels.
+- Calculate total purchase cost and handle payment transactions.
 
-Memilih dan membeli produk dari daftar barang yang tersedia.
-Mendukung pengurangan stok otomatis sesuai jumlah produk yang dibeli.
-Menampilkan keranjang belanja secara real-time.
-Keamanan Admin:
+## Getting Started
 
-Untuk menambah, memperbarui, atau menghapus produk, pengguna harus memasukkan password admin (Admin#1234).
-Cara Menjalankan Program
-Persiapan:
+### Prerequisites
 
-Pastikan Anda telah menginstal Python di perangkat Anda (versi 3.6 atau lebih baru).
-Simpan file program dengan nama raditmart.py.
-Menjalankan Program:
+- Python 3.x installed on your system.
+- The `tabulate` library for displaying tables.
 
-Buka terminal atau command prompt.
-Jalankan program dengan perintah:
+### Installation
+
+1. Clone the repository:
+
+   bash
+   git clone https://github.com/your-username/raditmart-minimarket.git
+
+2. Navigate to the project directory:
+
+   bash
+   cd raditmart-minimarket
+
+3. Install the required Python package:
+
+   bash
+   pip install tabulate
+
+### Running the Application
+
+To start the Raditmart Minimarket application, run the following command:
+
 bash
-Copy code
 python raditmart.py
-Navigasi Menu:
 
-Ikuti instruksi di layar untuk memilih menu dan submenu yang diinginkan.
-Gunakan angka untuk memilih opsi pada menu.
-Struktur Data
-Program menggunakan struktur data berbasis dictionary untuk menyimpan informasi produk, dengan format berikut:
+Follow the on-screen instructions to navigate through the menu and perform various operations.
 
-python
-Copy code
-barang = {
-"nama": [<list_nama_produk>],
-"kategori": [<list_kategori_produk>],
-"harga": [<list_harga_produk>],
-"stock": [<list_stok_produk>],
-"produsen": [<list_produsen_produk>]
-}
-Panduan Fitur
+## Usage
 
-1. Melihat List Produk
-   Sub Menu:
-   Melihat Semua Barang: Menampilkan semua produk dalam bentuk tabel.
-   Cari Barang: Mencari produk berdasarkan nama, kategori, atau produsen.
-2. Menambah Produk (Admin)
-   Masukkan password admin: Admin#1234.
-   Inputkan detail produk baru (nama, kategori, harga, stok, produsen).
-   Produk tidak boleh memiliki nama yang sama dengan produk yang sudah ada.
-3. Memperbarui Produk (Admin)
-   Masukkan password admin: Admin#1234.
-   Pilih produk yang ingin diperbarui, kemudian tentukan kolom yang ingin diubah.
-4. Menghapus Produk (Admin)
-   Masukkan password admin: Admin#1234.
-   Pilih produk yang ingin dihapus dari daftar.
-5. Membeli Produk
-   Pilih produk dari daftar.
-   Tentukan jumlah produk yang ingin dibeli.
-   Stok produk akan berkurang secara otomatis setelah pembelian.
-   Program akan menghitung total belanja, meminta pembayaran, dan memberikan kembalian jika diperlukan.
-   Contoh Output
-   Melihat Daftar Produk
-   plaintext
-   Copy code
-   +----+--------------------+-----------+-------+-------+------------+
-   | | nama | kategori | harga | stock | produsen |
-   +====+====================+===========+=======+=======+============+
-   | 0 | Susu UHT Fullcream | Minuman | 12000 | 20 | PT. Mayora |
-   | 1 | Roti Tawar | Makanan | 15000 | 10 | Indofood |
-   | 2 | Pasta Gigi | Kebutuhan | 8000 | 30 | Unilever |
-   | 3 | Teh Botol | Minuman | 5000 | 50 | Dadone |
-   | 4 | Mie Instan | Makanan | 3500 | 100 | Indofood |
-   | 5 | Wawa | Makanan | 20000 | 0 | Kuala |
-   +----+--------------------+-----------+-------+-------+------------+
-   Membeli Produk
-   plaintext
-   Copy code
-   Keranjang Belanja Anda:
-   No Nama Produk Harga per Item Jumlah Harga Total  
-   ====================================================================
-   1 Mie Instan 3500 3 10500
-   2 Teh Botol 5000 5 25000
-   ====================================================================
-   Total yang harus dibayar: Rp. 35500
-   Masukkan jumlah uang: 50000
-   Uang kembalian anda: 14500
-   Terima kasih telah berbelanja di Raditmart 😘
-   Catatan
-   Password Admin: Admin#1234 digunakan untuk menambah, memperbarui, dan menghapus produk.
-   Validasi Input: Program memeriksa semua input untuk memastikan data yang dimasukkan valid.
-   Keranjang Belanja: Menyimpan produk yang dipilih hingga proses pembayaran selesai.
-   Terima kasih telah menggunakan Raditmart! 😊
+- **View Products:** Select option 1 from the main menu to view all products or search for specific products.
+- **Add Products:** Access option 2 with the password `Admin#1234` to add new products.
+- **Update Products:** Access option 3 with the password `Admin#1234` to update product details.
+- **Delete Products:** Access option 4 with the password `Admin#1234` to remove products from inventory.
+- **Purchase Products:** Select option 5 to buy products and manage stock levels.
+
+## Contributing
+
+Contributions are welcome! If you have any ideas or improvements, feel free to fork the repository and submit a pull request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- Developed and maintained by [Your Name](https://github.com/your-username).
+- Inspired by the need for efficient inventory management in small businesses.
+
+### Additional Notes:
+
+- Replace your-username and Your Name with your actual GitHub username and name.
+- If you have a license file, ensure it's included in the repository and referenced correctly in the README.
+- Customize the Acknowledgments section as needed, or remove it if not applicable.
+
+This README.md provides a comprehensive guide for users to understand and run your project effectively.
