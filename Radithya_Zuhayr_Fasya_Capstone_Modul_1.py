@@ -108,7 +108,8 @@ def listProduk():
 def minimarket():
     while True:
         menu()
-        inputMenu = input("Masukkan angka menu yang ingin dijalankan: ")
+        inputMenu = input(
+            "Masukkan angka menu yang ingin dijalankan: ").strip()
         if inputMenu == "1":
             sub1()
         elif inputMenu == "2":
@@ -148,7 +149,7 @@ def minimarket():
 def sub1():
     while True:
         subMenu1()
-        inputSubMenu1 = input("Masukkan angka pada Sub Menu: ")
+        inputSubMenu1 = input("Masukkan angka pada Sub Menu: ").strip()
         if inputSubMenu1 == "1":
             if not barang["nama"]:
                 print("Semua Produk tidak tersedia")
@@ -193,32 +194,33 @@ def sub1():
 def sub2():
     while True:
         subMenu2()
-        inputSubMenu2 = input("Masukkan angka pada Sub Menu: ")
+        inputSubMenu2 = input("Masukkan angka pada Sub Menu: ").strip()
         if inputSubMenu2 == "1":
-            inputNama = input("Masukkan Nama Produk: ")
+            inputNama = input("Masukkan Nama Produk: ").strip()
             while inputNama == "":
                 print("Nama Produk tidak boleh kosong")
-                inputNama = input("Masukkan Nama Produk: ")
-            inputKategori = input("Masukkan Kategori Produk: ")
+                inputNama = input("Masukkan Nama Produk: ").strip()
+            inputKategori = input("Masukkan Kategori Produk: ").strip()
             while inputKategori == "":
                 print("Kategori Produk tidak boleh kosong")
-                inputKategori = input("Masukkan Kategori Produk: ")
-            inputHarga = input("Masukkan Harga Produk: ")
+                inputKategori = input("Masukkan Kategori Produk: ").strip()
+            inputHarga = input("Masukkan Harga Produk: ").strip()
             while not inputHarga.isdigit():
                 print("Masukkan Angka!")
-                inputHarga = input("Masukkan Harga Produk: ")
+                inputHarga = input("Masukkan Harga Produk: ").strip()
             else:
                 inputHarga = int(inputHarga)
-            inputStock = input("Masukkan Stock Produk: ")
+            inputStock = input("Masukkan Stock Produk: ").strip()
             while not inputStock.isdigit():
                 print("Masukkan Angka!")
-                inputStock = input("Masukkan Stock Produk: ")
+                inputStock = input("Masukkan Stock Produk: ").strip()
             else:
                 inputStock = int(inputStock)
-            inputProdusen = input("Masukkan Produsen dari Produk: ")
+            inputProdusen = input("Masukkan Produsen dari Produk: ").strip()
             while inputProdusen == "":
                 print("Produsen tidak boleh kosong")
-                inputProdusen = input("Masukkan Produsen dari Produk: ")
+                inputProdusen = input(
+                    "Masukkan Produsen dari Produk: ").strip()
 
             if inputNama.lower() in [nama.lower() for nama in barang["nama"]]:
                 print(f"Nama Produk {inputNama} sudah ada!")
@@ -240,7 +242,7 @@ def sub2():
 def sub3():
     while True:
         subMenu3()
-        inputSubMenu3 = input("Masukkan angka pada Sub Menu: ")
+        inputSubMenu3 = input("Masukkan angka pada Sub Menu: ").strip()
         if inputSubMenu3 == "1":
             while True:
                 listProduk()
@@ -263,7 +265,8 @@ def sub3():
                     print("5. Produsen")
                     print("6. Update Semua Kolom")
 
-                    pilih = input("Masukkan Kolom yang ingin di Update: ")
+                    pilih = input(
+                        "Masukkan Kolom yang ingin di Update: ").strip()
                     if pilih == "1":
                         barang["nama"][index] = input(
                             "Masukkan Nama baru: ").strip()
@@ -383,7 +386,7 @@ def sub3():
 def sub4():
     while True:
         subMenu4()
-        inputSubMenu4 = input("Masukkan angka pada Sub Menu: ")
+        inputSubMenu4 = input("Masukkan angka pada Sub Menu: ").strip()
         if inputSubMenu4 == "1":
             listProduk()
             while True:
@@ -421,7 +424,7 @@ def sub5():
     keranjang = []
     while True:
         subMenu5()
-        inputSubMenu5 = input("Masukkan angka pada Sub Menu: ")
+        inputSubMenu5 = input("Masukkan angka pada Sub Menu: ").strip()
         if inputSubMenu5 == "1":
             while True:
                 listProduk()
@@ -472,7 +475,8 @@ def sub5():
 
                 showKeranjang(keranjang)
 
-                beliLagi = input("Apakah anda ingin belanja lagi? (y/t): ")
+                beliLagi = input(
+                    "Apakah anda ingin belanja lagi? (y/t): ").strip()
                 if beliLagi == "t":
                     break
 
